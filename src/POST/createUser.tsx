@@ -1,4 +1,4 @@
- import { useState } from "react";
+ import { useState, useEffect } from "react";
  import axios from "axios";
  import { User } from "../modules/user";
 import { strict } from "assert";
@@ -10,16 +10,6 @@ function CreateUser() {
     const [email, setEmail] = useState('');
     const [phone_number, setPhoneNumber] = useState('');
     const [gender, setGender] = useState('');
-    const [error, setError] = useState('');
-
-    const validateForm = () => {
-        if (!first_name.trim()) {
-            setError('First Name is required');
-            return false;
-        }
-        setError('');
-        return true;
-    }
     
     const Submit = (e: any) => {
         e.preventDefault();
@@ -70,7 +60,6 @@ function CreateUser() {
                     <label>Gender</label>
                     <input type="text" value={gender} onChange={(e: any) => setGender(e.target.value)}/> 
                 </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
                 <button>Submit</button>
             </form>
         </div>
