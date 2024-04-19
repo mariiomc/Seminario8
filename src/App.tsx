@@ -9,7 +9,7 @@ function App() {
   return (
     <React.StrictMode>
       <GetUsers />
-      {/* <CreateUser /> */}
+      <CreateUser />
     </React.StrictMode>
     
   );
