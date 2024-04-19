@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { User } from "../modules/user";
 import axios from "axios";
+import './getUser.css'
 
 interface GetUsersProps {
     usersUpdated: boolean;
@@ -16,9 +17,9 @@ function GetUsers({ usersUpdated } : GetUsersProps){
     }, [usersUpdated] )
 
     return (
-        <div>
-            <div>
-                <table>
+        <div className="users-container">
+            <div className="table-container">
+                <table className="users-table">
                     <thead>
                         <tr>
                             <th>Name</th>
