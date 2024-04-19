@@ -3,7 +3,11 @@
  import { User } from "../modules/user";
 import { strict } from "assert";
 
-function CreateUser() {
+interface CreateUserProps {
+    updateUserList: () => void;
+}
+
+function CreateUser({ updateUserList } : CreateUserProps) {
     const [first_name, setFirsName] = useState('');
     const [middle_name, setMiddleName] = useState('');
     const [last_name, setLastName] = useState('');
@@ -28,6 +32,15 @@ function CreateUser() {
         axios.post("http://localhost:3000/user", user)
         .then(result => {
             console.log(result)
+            updateUserList();
+
+            setFirsName('');
+            setMiddleName('');
+            setLastName('');
+            setEmail('');
+            setPhoneNumber('');
+            setGender('');
+
         })
         .catch(err => console.log(err));
         console.log(user);

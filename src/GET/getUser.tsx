@@ -2,20 +2,22 @@ import { useState, useEffect } from "react";
 import { User } from "../modules/user";
 import axios from "axios";
 
+interface GetUsersProps {
+    usersUpdated: boolean;
+}
 
-function GetUsers(){
+function GetUsers({ usersUpdated } : GetUsersProps){
     const [users, setUsers] = useState<User[]>([]);
 
     useEffect(() => {
         axios.get('http://localhost:3000/user')
         .then((result) => setUsers(result.data))
         .catch((err) => console.log(err))
-    }, [] )
+    }, [usersUpdated] )
 
     return (
         <div>
             <div>
-                {/* <Link to="/create" className='btn btn-success'>Add + </Link> */}
                 <table>
                     <thead>
                         <tr>
@@ -34,11 +36,6 @@ function GetUsers(){
                                     <td>{user.email}</td>
                                     <td>{user.phone_number}</td>
                                     <td>{user.gender}</td>
-                                   {/*  <td>
-                                    <Link to={`/update/${user._id}`} className='btn btn-success'>Update</Link>
-                                    <Link to={`/products/`} className='btn btn-success'>Products</Link>
-                                        <button className='btn btn-danger' onClick={() => handleDelete(user._id)}>Delete</button>
-                                    </td> */}
                                 </tr>
                             ))
                         }
