@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import GetUsers from '../GET/getUser';
+import { User } from '../modules/user'
+import GetUsers from '../GET/getUsers';
+import PropExemple from '../GET/getUser';
 import CreateUser from '../POST/createUser';
 import '@fontsource/inter';
 
@@ -9,7 +11,8 @@ import '@fontsource/inter';
 function AppUser() {
 
   const [usersUpdated, setUsersUpdated] = useState(false);
-
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  
   const updateUserList = () => {
       setUsersUpdated(!usersUpdated);
   };
@@ -22,7 +25,11 @@ function AppUser() {
       </div>
       <div className="component">
         <h2>Get Users Component</h2>
-        <GetUsers usersUpdated={usersUpdated} />
+        <GetUsers usersUpdated={usersUpdated} setSelectedUser={setSelectedUser}/>
+      </div>
+      <div className="component">
+        <h2>Prop Example</h2>
+        <PropExemple user={selectedUser} />
       </div>
       <div className="component">
         <h2>Create User Component</h2>

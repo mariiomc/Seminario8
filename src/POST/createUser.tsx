@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { User } from "../modules/user";
+import './createUser.css';
 
 interface CreateUserProps {
     updateUserList: () => void;
@@ -98,7 +99,7 @@ function CreateUser({ updateUserList }: CreateUserProps) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="create-user-form">
                 <div>
                     <label>First Name</label>
                     <input type="text" value={first_name} onChange={(e) => { setFirstName(e.target.value); validateField('first_name', e.target.value); }} />
