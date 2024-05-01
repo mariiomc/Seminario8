@@ -21,6 +21,22 @@
     margin-bottom: 10px;
 }
 
+.update-user-form button[type="submit"] {
+    background-color: #61dafb;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .update-user-form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
 .user-details > div {
     margin-bottom: 15px;
 }
+.update-user-form > div {
+    margin-bottom: 15px; 
+  }

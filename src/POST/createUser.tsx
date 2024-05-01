@@ -19,9 +19,10 @@ function CreateUser({ updateUserList }: CreateUserProps) {
     const [phone_number, setPhoneNumber] = useState('');
     const [gender, setGender] = useState('');
     const [errors, setErrors] = useState<FormErrors>({});
+        
+    let errorMessage = '';
 
     const validateField = (fieldName: string, value: string) => {
-        let errorMessage = '';
 
         switch (fieldName) {
             case 'first_name':
@@ -36,9 +37,26 @@ function CreateUser({ updateUserList }: CreateUserProps) {
             case 'email':
                 errorMessage = value.trim() === '' ? 'Email is required' : !isValidEmail(value) ? 'Invalid email format' : '';
                 break;
+            case 'phone_number':
+                if (value.trim() !== ''){
+                    axios.get('http://localhost:3000/user/?phone_number=${value}')
+                        .then(response =>{
+                            if(response.data.length > 0){
+                                errorMessage = 'El número de teléfono ya está registrado'
+                            }
+                            setErrors(prevErrors => ({
+                                ...prevErrors,
+                                [fieldName]: errorMessage
+                            }));
+                        })
+                        .catch(err => console.error(err));
+                }
+                break;
             default:
                 break;
         }
+
+        
 
         setErrors(prevErrors => ({
             ...prevErrors,
@@ -49,6 +67,8 @@ function CreateUser({ updateUserList }: CreateUserProps) {
     const isValidEmail = (email: string) => {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     };
+
+    
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -75,7 +95,8 @@ function CreateUser({ updateUserList }: CreateUserProps) {
                     setPhoneNumber('');
                     setGender('');
                 })
-                .catch(err => console.error(err));
+                .catch(err => console.error(err)
+);
         }
     };
 

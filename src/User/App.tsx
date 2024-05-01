@@ -5,7 +5,12 @@ import { User } from '../modules/user'
 import GetUsers from '../GET/getUsers';
 import PropExemple from '../GET/getUser';
 import CreateUser from '../POST/createUser';
+import GetPosts from '../GET/getPosts';
+import CreatePost from '../POST/createPost';
+
+
 import '@fontsource/inter';
+import { IPost } from '../modules/post';
 
 
 function AppUser() {
@@ -13,9 +18,17 @@ function AppUser() {
   const [usersUpdated, setUsersUpdated] = useState(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   
+  const [postsUpdated, setPostsUpdated] = useState(false);
+  const [selectedPost, setSelectedPost] = useState<IPost | null>(null);
+  
+
   const updateUserList = () => {
       setUsersUpdated(!usersUpdated);
   };
+
+  const updatePostList = () => {
+    setPostsUpdated(!postsUpdated);
+};
 
   return (
     <div className="container" >
@@ -34,6 +47,14 @@ function AppUser() {
       <div className="component">
         <h2>Create User Component</h2>
         <CreateUser updateUserList={updateUserList} />
+      </div>
+      <div className="component">
+        <h2>Get Posts Component</h2>
+        <GetPosts postsUpdated={postsUpdated} setSelectedPost={setSelectedPost}/>
+      </div>
+      <div className="component">
+        <h2>Create Post Component</h2>
+        <CreatePost updatePostList={updatePostList} />
       </div>
     </div>
 );

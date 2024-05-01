@@ -3,19 +3,19 @@ body {
 }
 
 
-.create-user-form {
+.create-post-form {
     max-width: 400px;
     margin: 0 auto;
     text-align: center;
   }
   
-  .create-user-form label {
+  .create-post-form label {
     display: block;
     margin-bottom: 5px;
     text-align: left;
   }
   
-  .create-user-form input[type="text"] {
+  .create-post-form input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -26,16 +26,16 @@ body {
     color: #fff;
   }
   
-  .create-user-form span.error-message {
+  .create-post-form span.error-message {
     color: rgb(252, 93, 93);
     text-align: left;
     display: block;
   }
   
   
-  .create-user-form button[type="submit"] {
+  .create-post-form button[type="submit"] {
     background-color: #61dafb;
-    color: #fff;  
+    color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -43,11 +43,11 @@ body {
     margin-top: 10px;
   }
   
-  .create-user-form button[type="submit"]:hover {
+  .create-post-form button[type="submit"]:hover {
     background-color: #0056b3;
   }
 
-  .create-user-form > div {
+  .create-post-form > div {
     margin-bottom: 15px; 
   }
   
